@@ -6,11 +6,17 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:57:16 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/08 12:44:50 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/08 13:25:29 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	sort_two(int *a, int counter)
+{
+	if (a[0] > a[1])
+		ft_swap(&a[0], &a[1], counter, 'a');
+}
 
 void	sort_three(int *a, int counter_a, char array)
 {

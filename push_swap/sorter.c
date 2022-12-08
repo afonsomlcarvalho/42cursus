@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 10:23:36 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/08 12:41:32 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/08 13:26:21 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	sorter(int *a, int *b, int counter_a, int counter_b)
 
 	i = 0;
 	x = 0;
-	sort_four_to_six(a, b, &counter_a, &counter_b);
+	sort_two(a, counter_a);
 	ft_printf("a: ");
 	while (counter_a-- > 0)
 	{
