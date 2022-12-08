@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 10:30:04 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/04 19:17:48 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/08 12:12:14 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,20 @@ int	*b_creator(int argv, int size)
 	return (b);
 }
 
+int	sorted(int *a, int counter_a)
+{
+	int	i;
+
+	i = 1;
+	while (i < counter_a)
+	{
+		if (a[i] < a[i - 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	main(int argv, char **argc)
 {
 	int	*a;
@@ -86,7 +100,8 @@ int	main(int argv, char **argc)
 	else
 		a = a_creator(split_size(ft_split(argc[1], ' ')), ft_split(argc[1], ' '), &counter_a, 0);
 	b = b_creator(argv, split_size(ft_split(argc[1], ' ')));
-	sorter(a, b, counter_a, counter_b);
+	if (!sorted(a, counter_a))
+		sorter(a, b, counter_a, counter_b);
 	free (a);
 	free (b);
 }
