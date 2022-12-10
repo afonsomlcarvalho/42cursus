@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/09 10:27:24 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/09 10:27:28 by amorais-         ###   ########.fr       */
+/*   Created: 2022/10/25 10:31:35 by amorais-          #+#    #+#             */
+/*   Updated: 2022/10/27 11:49:45 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lists.h"
+#include "libft.h"
 
-t_list	*ft_lstnew(void *content)
+int	ft_tolower(int c)
 {
-	t_list	*lst;
-
-	lst = malloc(sizeof(t_list));
-	if (!lst)
-		return (NULL);
-	lst->content = content;
-	lst->next = NULL;
-	return (lst);
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	return (c);
 }
