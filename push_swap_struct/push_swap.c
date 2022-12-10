@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 22:57:40 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/10 00:12:54 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/10 13:42:26 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,8 @@ int	main(int argv, char **argc)
 
 	if (argv <= 1)
 		exit(0) ;
-	if (argv > 2 && error_check(argc, 1))
-		return (ft_printf("Error\n"));
-	if (argv == 2 && error_check(ft_split(argc[1], ' '), 0))
+	if ((argv > 2 && error_check(argc, 1)) || (argv == 2 && \
+	error_check(ft_split(argc[1], ' '), 0)))
 		return (ft_printf("Error\n"));	
 	if (argv == 2)
 		a = a_creator(ft_split(argc[1], ' '), 0);
@@ -79,11 +78,7 @@ int	main(int argv, char **argc)
 	b = NULL;
 	if (sorted(a))
 		exit(0);
-	printer(a, b);
-	push(&a, &b, 'a');
-	printer(a, b);
-	rotate(&a, 'a');
-	printer(a, b);
+	sorter(a, b);
 	free(a);
 	if (b)
 		free(b);

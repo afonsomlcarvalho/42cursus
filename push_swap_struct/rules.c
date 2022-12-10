@@ -37,19 +37,39 @@ void	swap(stack **a, char c)
 void	rotate(stack **a, char c)
 {
 	stack		*current;
-	long int	i;
+	stack		*temp;
 
 	if ((*a)->next)
 	{
-		i = (*a)->number;
+		temp = (*a);
 		(*a) = (*a)->next;
 		current = (*a);
-		while (current)
+		while (current->next)
 			current = current->next;
-		current = malloc(sizeof(stack));
-		current->number = i;
-		current->next = NULL;
+		temp->next = NULL;
+		current->next = temp;
 	}
 	if (c)
 		ft_printf("r%c\n", c);
+}
+
+void	reverse_rotate(stack **a, char c)
+{
+	stack	*last;
+	stack	*current;
+
+	if ((*a)->next)
+	{
+		last = (*a);
+		while (last->next)
+			last = last->next;
+		current = (*a);
+		while (current->next->next)
+			current = current->next;
+		current->next = NULL;
+		last->next = (*a);
+		(*a) = last;
+	}
+	if (c)
+		ft_printf("rr%c\n", c);
 }
