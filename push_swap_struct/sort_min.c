@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 12:31:56 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/10 14:20:44 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/11 14:09:12 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	sort_four_to_five(stack **a, stack **b)
 			else
 				reverse_rotate(a, 'a');
 		}
-		push(b, a, 'b');
+		push(a, b, 'b');
 	}
 	sort_three(a);
 	while (stack_size(*b) > 0)
-		push(a, b, 'a');
+		push(b, a, 'a');
 }
