@@ -1,43 +1,55 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rules.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/12 09:56:08 by amorais-          #+#    #+#             */
+/*   Updated: 2022/12/12 14:11:07 by amorais-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	push(stack **a, stack **b, char c)
+void	push(t_stack **a, t_stack **b, char c)
 {
-	stack *temp;
+	t_stack	*temp;
 
 	if (!(*a))
 		return ;
 	if (!(*b))
 	{
-		*b = malloc(sizeof(stack));
+		*b = malloc(sizeof(t_stack));
 		(*b)->number = (*a)->number;
 		(*b)->next = NULL;
 	}
 	else
 	{
-		temp = malloc(sizeof(stack));
+		temp = malloc(sizeof(t_stack));
 		temp->number = (*a)->number;
 		temp->next = *b;
 		*b = temp;
 	}
 	*a = (*a)->next;
-	ft_printf("p%c\n", c);
+	//ft_printf("p%c\n", c);
 }
 
-void	swap(stack **a, char c)
+void	swap(t_stack **a, char c)
 {
 	long int	swap;
 
 	swap = (*a)->number;
 	(*a)->number = (*a)->next->number;
 	(*a)->next->number = swap;
-	if (c)
-		ft_printf("s%c\n", c);
+	//if (c)
+		//ft_printf("s%c\n", c);
 }
 
-void	rotate(stack **a, char c)
+void	rotate(t_stack **a, t_stack **b, char c)
 {
-	stack		*current;
-	stack		*temp;
+	t_stack		*current;
+	t_stack		*temp;
 
 	if ((*a)->next)
 	{
@@ -49,14 +61,16 @@ void	rotate(stack **a, char c)
 		temp->next = NULL;
 		current->next = temp;
 	}
-	if (c)
-		ft_printf("r%c\n", c);
+	if (c == 'r')
+		rotate(b, a, 0);
+	//if (c)
+		//ft_printf("r%c\n", c);
 }
 
-void	reverse_rotate(stack **a, char c)
+void	reverse_rotate(t_stack **a, t_stack **b, char c)
 {
-	stack	*last;
-	stack	*current;
+	t_stack	*last;
+	t_stack	*current;
 
 	if ((*a)->next)
 	{
@@ -70,6 +84,8 @@ void	reverse_rotate(stack **a, char c)
 		last->next = (*a);
 		(*a) = last;
 	}
-	if (c)
-		ft_printf("rr%c\n", c);
+	if (c == 'r')
+		reverse_rotate(a, b, 0);
+	//if (c)
+		//ft_printf("rr%c\n", c);
 }

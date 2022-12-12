@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 22:57:40 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/10 13:42:26 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/12 12:40:32 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ int	error_check(char **argc, int arg)
 	return (0);
 }
 
-stack	*a_creator(char	**argc, int arg)
+t_stack	*a_creator(char	**argc, int arg)
 {
-	stack	*a;
+	t_stack	*a;
 
-	a = malloc(sizeof(stack));
+	a = malloc(sizeof(t_stack));
 	a->number = ft_atoi(argc[arg]);
 	a->next = NULL;
 	if (argc[++arg])
@@ -47,9 +47,9 @@ stack	*a_creator(char	**argc, int arg)
 	return (a);
 }
 
-int	sorted(stack *a)
+int	sorted(t_stack *a)
 {
-	stack	*current;
+	t_stack	*current;
 
 	current = a;
 	while (current->next)
@@ -63,14 +63,14 @@ int	sorted(stack *a)
 
 int	main(int argv, char **argc)
 {
-	stack	*a;
-	stack	*b;
+	t_stack	*a;
+	t_stack	*b;
 
 	if (argv <= 1)
-		exit(0) ;
+		exit(0);
 	if ((argv > 2 && error_check(argc, 1)) || (argv == 2 && \
 	error_check(ft_split(argc[1], ' '), 0)))
-		return (ft_printf("Error\n"));	
+		return (ft_printf("Error\n"));
 	if (argv == 2)
 		a = a_creator(ft_split(argc[1], ' '), 0);
 	else
