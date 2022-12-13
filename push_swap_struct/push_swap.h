@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 09:58:34 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/13 14:37:09 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/13 15:55:09 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ int		position_in_other(int current, t_stack *a);
 int		cost(t_stack *current, t_stack *a, t_stack *b);
 void	sort(t_stack **a, t_stack **b);
 int		max_position(t_stack *a);
-long int	ft_atoi(const char *nptr);
+void	stack_clear(t_stack **a);
 #endif

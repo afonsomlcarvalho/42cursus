@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 09:56:17 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/13 14:13:22 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/13 17:06:04 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,7 @@ void	sorter(t_stack *a, t_stack *b)
 		sort_four_to_five(&a, &b);
 	else
 		sort(&a, &b);
+	stack_clear(&a);
+	if (b)
+		stack_clear(&b);
 }

@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 09:55:17 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/13 14:37:58 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/13 16:07:59 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,17 @@ int	max_position(t_stack *a)
 		a = a->next;
 	}
 	return (m);
+}
+
+void	stack_clear(t_stack **a)
+{
+	t_stack	*temp;
+
+	while (*a)
+	{
+		temp = (*a)->next;
+		free(*a);
+		*a = temp;
+	}
+	*a = NULL;
 }

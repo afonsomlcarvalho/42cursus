@@ -6,11 +6,24 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 22:57:40 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/13 14:39:06 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/13 17:20:19 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	split_free(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free (array);
+}
 
 int	error_check(char **argc, int arg)
 {
@@ -32,18 +45,24 @@ int	error_check(char **argc, int arg)
 				return (1);
 		i++;
 	}
+	if (arg == 0)
+		split_free(argc);
 	return (0);
 }
 
 t_stack	*a_creator(char	**argc, int arg)
 {
 	t_stack	*a;
+	int	m;
 
+	m = arg;
 	a = malloc(sizeof(t_stack));
 	a->number = ft_atoi(argc[arg]);
 	a->next = NULL;
 	if (argc[++arg])
 		a->next = a_creator(argc, arg);
+	if (m == 0)
+		split_free(argc);
 	return (a);
 }
 
@@ -79,7 +98,4 @@ int	main(int argv, char **argc)
 	if (sorted(a))
 		exit(0);
 	sorter(a, b);
-	free(a);
-	if (b)
-		free(b);
 }

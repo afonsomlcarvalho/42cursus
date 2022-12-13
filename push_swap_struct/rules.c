@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 09:56:08 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/13 11:55:48 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/13 17:02:08 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	push(t_stack **a, t_stack **b, char c)
 {
 	t_stack	*temp;
+	t_stack *temp1;
 
 	if (!(*a))
 		return ;
@@ -28,10 +29,12 @@ void	push(t_stack **a, t_stack **b, char c)
 	{
 		temp = malloc(sizeof(t_stack));
 		temp->number = (*a)->number;
-		temp->next = *b;
-		*b = temp;
+		temp->next = (*b);
+		(*b) = temp;
 	}
+	temp1 = (*a);
 	*a = (*a)->next;
+	free(temp1);
 	ft_printf("p%c\n", c);
 }
 
