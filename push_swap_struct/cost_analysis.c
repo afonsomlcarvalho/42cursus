@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:13:40 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/12 14:00:22 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/13 10:47:05 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,12 @@ int	position_in_other(int current, t_stack *a)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	if (current < min(a) || current > max(a))
 		return (min_position(a));
 	if (current < a->number && current > stc_last(a)->number)
 		return (0);
-	while (current < a->number || current > a->next->number)
+	while (!(current > a->number && current < a->next->number))
 	{
 		i++;
 		a = a->next;

@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 09:56:08 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/12 14:11:07 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/13 11:55:48 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	push(t_stack **a, t_stack **b, char c)
 		*b = temp;
 	}
 	*a = (*a)->next;
-	//ft_printf("p%c\n", c);
+	ft_printf("p%c\n", c);
 }
 
 void	swap(t_stack **a, char c)
@@ -42,8 +42,8 @@ void	swap(t_stack **a, char c)
 	swap = (*a)->number;
 	(*a)->number = (*a)->next->number;
 	(*a)->next->number = swap;
-	//if (c)
-		//ft_printf("s%c\n", c);
+	if (c)
+		ft_printf("s%c\n", c);
 }
 
 void	rotate(t_stack **a, t_stack **b, char c)
@@ -63,8 +63,8 @@ void	rotate(t_stack **a, t_stack **b, char c)
 	}
 	if (c == 'r')
 		rotate(b, a, 0);
-	//if (c)
-		//ft_printf("r%c\n", c);
+	if (c)
+		ft_printf("r%c\n", c);
 }
 
 void	reverse_rotate(t_stack **a, t_stack **b, char c)
@@ -85,7 +85,7 @@ void	reverse_rotate(t_stack **a, t_stack **b, char c)
 		(*a) = last;
 	}
 	if (c == 'r')
-		reverse_rotate(a, b, 0);
-	//if (c)
-		//ft_printf("rr%c\n", c);
+		reverse_rotate(b, a, 0);
+	if (c)
+		ft_printf("rr%c\n", c);
 }

@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:56:26 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/12 14:10:44 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/13 14:12:45 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	execute_cost(t_stack *current, t_stack **a, t_stack **b)
 
 	i = position(current, *b);
 	l = position_in_other(current->number, *a);
-	printf("%d\n", l);
-	if (i <= stack_size(*b) / 2 && l <= stack_size(*a) / 2 && i != -1)
-		while (i-- > 0 && l-- > 0)
+	if (i <= stack_size(*b) / 2 && l <= stack_size(*a) / 2 && i > 0 && l > 0)
+		while (l > 0 && i > 0 && i-- > 0 && l-- > 0)
 			rotate(a, b, 'r');
 	else if (i > stack_size(*b) / 2 && l > stack_size(*a) / 2 && i != -1)
-		while (i++ < stack_size(*b) && l++ <= stack_size(*a))
+		while (i < stack_size(*b) && l < stack_size(*a) && i++ < \
+		stack_size(*b) && l++ < stack_size(*a))
 			reverse_rotate(a, b, 'r');
 	if (i <= stack_size(*b) / 2 && i != -1)
 		while (i-- > 0)
@@ -36,7 +36,7 @@ void	execute_cost(t_stack *current, t_stack **a, t_stack **b)
 		while (l-- > 0)
 			rotate(a, b, 'a');
 	else if (l < stack_size(*a))
-		while (l++ <= stack_size(*a))
+		while (l++ < stack_size(*a))
 			reverse_rotate(a, b, 'a');
 	push(b, a, 'a');
 }
@@ -74,12 +74,11 @@ void	sort(t_stack **a, t_stack **b)
 	{
 		min_cost = min_cost_finder(*a, *b);
 		execute_cost(min_cost, a, b);
-		printer(*a, *b);
 	}
-	/* if (min_position(*a) <= stack_size(*a))
+	if (min_position(*a) <= stack_size(*a))
 		while (!sorted(*a))
 			rotate(a, b, 'a');
 	else
 		while (!sorted(*a))
-			reverse_rotate(a, b, 'a'); */
+			reverse_rotate(a, b, 'a');
 }
