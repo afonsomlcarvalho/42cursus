@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 13:12:02 by amorais-          #+#    #+#             */
-/*   Updated: 2022/10/31 13:12:03 by amorais-         ###   ########.fr       */
+/*   Created: 2022/12/09 10:27:18 by amorais-          #+#    #+#             */
+/*   Updated: 2022/12/09 10:27:19 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*lista;
+	t_list	*lst;
 
-	lista = (t_list *)malloc(sizeof(t_list));
-	if (!lista)
+	lst = malloc(sizeof(t_list));
+	if (!lst)
 		return (NULL);
-	lista ->content = content;
-	lista ->next = NULL;
-	return (lista);
+	lst->content = content;
+	lst->next = NULL;
+	return (lst);
 }

@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 10:13:40 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/13 10:47:05 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/14 15:26:56 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	min(t_stack *a)
 {
-	t_stack *min;
+	t_stack	*min;
 
 	min = a;
 	while (a)
@@ -28,7 +28,7 @@ int	min(t_stack *a)
 
 int	max(t_stack *a)
 {
-	t_stack *max;
+	t_stack	*max;
 
 	max = a;
 	while (a)

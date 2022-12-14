@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:56:26 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/13 16:14:55 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/14 13:50:06 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,25 +57,24 @@ t_stack	*min_cost_finder(t_stack *a, t_stack *b)
 	return (min_cost);
 }
 
+void	pusher(t_stack **a, t_stack **b)
+{
+	while (stack_size(*a) > 3)
+		push(a, b, 'b');
+	sort_three(a, b);
+}
+
 void	sort(t_stack **a, t_stack **b)
 {
 	t_stack	*min_cost;
 
-	while (!sorted(*a) && stack_size(*a) > 3)
-	{
-		if ((*a)->number > (*a)->next->number)
-			push(a, b, 'b');
-		else
-			rotate(a, b, 'a');
-	}
-	if (stack_size(*a) == 3)
-		sort_three(a, b);
+	pusher(a, b);
 	while (stack_size(*b) > 0)
 	{
 		min_cost = min_cost_finder(*a, *b);
 		execute_cost(min_cost, a, b);
 	}
-	if (min_position(*a) <= stack_size(*a))
+	if (min_position(*a) <= stack_size(*a) / 2)
 		while (!sorted(*a))
 			rotate(a, b, 'a');
 	else

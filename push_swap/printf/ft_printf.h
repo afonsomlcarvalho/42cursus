@@ -6,14 +6,14 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 12:52:41 by amorais-          #+#    #+#             */
-/*   Updated: 2022/11/09 17:16:35 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/14 14:13:17 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include <stdarg.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 int		ft_printf(const char *s, ...);
 int		nbrlen(long int nb);

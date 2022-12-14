@@ -5,52 +5,58 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/08 10:23:36 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/08 13:26:21 by amorais-         ###   ########.fr       */
+/*   Created: 2022/12/12 09:56:17 by amorais-          #+#    #+#             */
+/*   Updated: 2022/12/13 17:06:04 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	get_min_to_beg(int *a, int counter_a)
+void	sort_three(t_stack **a, t_stack **b)
 {
-	int min;
-	int	i;
-
-	min = 0;
-	i = 1;
-	while (i < counter_a)
+	while (!sorted(*a))
 	{
-		if (a[min] > a[i])
-			min = i;
-		i++;
+		if ((*a)->number > (*a)->next->number && (*a)->number > \
+		stc_last(*a)->number)
+			rotate(a, b, 'a');
+		if ((*a)->number > (*a)->next->number && (*a)->number < \
+		stc_last(*a)->number)
+			swap(a, 'a');
+		if ((*a)->number < (*a)->next->number && (*a)->next->number > \
+		stc_last(*a)->number)
+			reverse_rotate(a, b, 'a');
 	}
-	if (min > counter_a / 2)
-		while (min++ < counter_a)
-			reverse_rotate(a, counter_a, 'a');
-	else
-		while (min-- > 0)
-			rotate(a, counter_a, 'a');
 }
 
-void	sorter(int *a, int *b, int counter_a, int counter_b)
+void	sort_four_to_five(t_stack **a, t_stack **b)
 {
-	int	i;
-	int	x;
+	while (stack_size(*a) > 3)
+	{
+		while (min_position(*a))
+		{
+			if (min_position(*a) <= stack_size(*a) / 2)
+				rotate(a, b, 'a');
+			else
+				reverse_rotate(a, b, 'a');
+		}
+		push(a, b, 'b');
+	}
+	sort_three(a, b);
+	while (stack_size(*b) > 0)
+		push(b, a, 'a');
+}
 
-	i = 0;
-	x = 0;
-	sort_two(a, counter_a);
-	ft_printf("a: ");
-	while (counter_a-- > 0)
-	{
-		ft_printf("%d ", a[i]);
-		i++;
-	}
-	ft_printf("\nb: ");
-	while (counter_b-- > 0)
-	{
-		ft_printf("%d ", b[x]);
-		x++;
-	}
+void	sorter(t_stack *a, t_stack *b)
+{
+	if (stack_size(a) == 2)
+		swap(&a, 'a');
+	else if (stack_size(a) == 3)
+		sort_three(&a, &b);
+	else if (stack_size(a) <= 5)
+		sort_four_to_five(&a, &b);
+	else
+		sort(&a, &b);
+	stack_clear(&a);
+	if (b)
+		stack_clear(&b);
 }

@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 09:56:08 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/13 17:02:08 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/14 15:13:19 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	push(t_stack **a, t_stack **b, char c)
 {
 	t_stack	*temp;
-	t_stack *temp1;
+	t_stack	*temp1;
 
 	if (!(*a))
 		return ;

@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 14:00:27 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/02 11:35:55 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/14 14:38:55 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 long int	ft_atoi(const char *nptr)
 {
 	int			i;
-	int			neg;
+	long int	neg;
 	long int	nbr;
 
 	i = 0;

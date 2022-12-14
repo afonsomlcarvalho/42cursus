@@ -5,12 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 10:30:04 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/08 12:12:14 by amorais-         ###   ########.fr       */
+/*   Created: 2022/12/09 22:57:40 by amorais-          #+#    #+#             */
+/*   Updated: 2022/12/14 15:29:35 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	split_free(char **array)
+{
+	int	i;
+
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free (array);
+}
 
 int	error_check(char **argc, int arg)
 {
@@ -23,85 +36,75 @@ int	error_check(char **argc, int arg)
 	{
 		j = arg;
 		x = 0;
+		if ((argc[i][0] == '-' || argc[i][0] == '+') && argc[i][1])
+			x++;
 		while (argc[i][x])
-			if (!ft_isdigit(argc[i][x++]) && argc[i][x - 1] != '-')
+			if (!ft_isdigit(argc[i][x++]))
 				return (1);
 		while (j < i)
-			if (ft_atoi(argc[j++]) == ft_atoi(argc[i]) \
-			|| ft_atoi(argc[i]) > INT_MAX || ft_atoi(argc[i]) < INT_MIN)
+			if (ft_atoi(argc[j++]) == ft_atoi(argc[i]))
 				return (1);
+		if (ft_atoi(argc[i]) > INT_MAX || ft_atoi(argc[i]) < INT_MIN)
+			return (1);
 		i++;
 	}
+	if (arg == 0)
+		split_free(argc);
 	return (0);
 }
 
-int	*a_creator(int argv, char **argc, int *counter, int arg)
+t_stack	*a_creator(char	**argc, int arg)
 {
-	int	i;
-	int	*a;
+	t_stack	*a;
+	int		m;
 
-	a = malloc(sizeof(int) * (argv - arg));
-	if (!a)
-		return (NULL);
-	i = 0;
-	while (i < argv - arg)
-	{
-		a[i] = ft_atoi(argc[i + arg]);
-		i++;
-		(*counter)++;
-	}
+	m = arg;
+	a = malloc(sizeof(t_stack));
+	a->number = ft_atoi(argc[arg]);
+	a->next = NULL;
+	if (argc[++arg])
+		a->next = a_creator(argc, arg);
+	if (m == 0)
+		split_free(argc);
 	return (a);
 }
 
-int	*b_creator(int argv, int size)
+int	sorted(t_stack *a)
 {
-	int	*b;
+	t_stack	*current;
 
-	if (argv == 2)
-		b = malloc(sizeof(int) * size);
-	else
-		b = malloc(sizeof(int) * (argv - 1));
-	if (!b)
-		return (NULL);
-	return (b);
-}
-
-int	sorted(int *a, int counter_a)
-{
-	int	i;
-
-	i = 1;
-	while (i < counter_a)
+	current = a;
+	while (current->next)
 	{
-		if (a[i] < a[i - 1])
+		if (current->number > current->next->number)
 			return (0);
-		i++;
+		current = current->next;
 	}
 	return (1);
 }
 
 int	main(int argv, char **argc)
 {
-	int	*a;
-	int	*b;
-	int	counter_a;
-	int	counter_b;
+	t_stack	*a;
+	t_stack	*b;
 
-	if (argv <= 1)
-		exit(0) ;
-	if (argv > 2 && error_check(argc, 1))
-		return (ft_printf("Error\n"));
-	if (argv == 2 && error_check(ft_split(argc[1], ' '), 0))
-		return (ft_printf("Error\n"));
-	counter_a = 0;
-	counter_b = 0;
-	if (argv > 2)
-		a = a_creator(argv, argc, &counter_a, 1);
+	if (argv <= 1 || !argc[1][0])
+		exit(0);
+	if ((argv > 2 && error_check(argc, 1)) || (argv == 2 && \
+	error_check(ft_split(argc[1], ' '), 0)))
+	{
+		write(2, "Error\n", 6);
+		exit (0);
+	}
+	if (argv == 2)
+		a = a_creator(ft_split(argc[1], ' '), 0);
 	else
-		a = a_creator(split_size(ft_split(argc[1], ' ')), ft_split(argc[1], ' '), &counter_a, 0);
-	b = b_creator(argv, split_size(ft_split(argc[1], ' ')));
-	if (!sorted(a, counter_a))
-		sorter(a, b, counter_a, counter_b);
-	free (a);
-	free (b);
+		a = a_creator(argc, 1);
+	b = NULL;
+	if (sorted(a))
+	{
+		stack_clear(&a);
+		exit(0);
+	}
+	sorter(a, b);
 }

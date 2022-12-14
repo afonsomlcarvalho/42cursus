@@ -1,10 +1,15 @@
-NAME = libft.a
+NAME = push_swap
 
-FLAGS = -Wall -Werror -Wextra
+COMPILER = cc -Wall -Werror -Wextra
 
-LIB = libft.h
+SRCS =	additionals.c \
+		cost_analysis.c \
+		push_swap.c \
+		rules.c \
+		sort_standard.c \
+		sorter.c
 
-SRCS =	ft_atoi.c \
+SRCSLIB = ft_atoi.c \
 		ft_bzero.c \
 		ft_calloc.c \
 		ft_isalnum.c \
@@ -14,7 +19,6 @@ SRCS =	ft_atoi.c \
 		ft_isprint.c \
 		ft_itoa.c \
 		ft_memchr.c \
-		ft_memcmp.c \
 		ft_memcmp.c \
 		ft_memcpy.c \
 		ft_memmove.c \
@@ -38,9 +42,8 @@ SRCS =	ft_atoi.c \
 		ft_strtrim.c \
 		ft_substr.c \
 		ft_tolower.c \
-		ft_toupper.c
-
-BONUS = ft_lstadd_back.c \
+		ft_toupper.c \
+		ft_lstadd_back.c \
 		ft_lstadd_front.c \
 		ft_lstclear.c \
 		ft_lstdelone.c \
@@ -50,22 +53,28 @@ BONUS = ft_lstadd_back.c \
 		ft_lstnew.c \
 		ft_lstsize.c
 
-OBJECTS = $(SRCS:.c=.o)
-BONUS_OBJECTS = $(BONUS:.c=.o)
+SRCSPR = ft_nbrlen.c \
+		ft_printf.c \
+		ft_putnbrs.c
 
-all:	$(NAME)
+SRCSLIBF = $(addprefix libft/, $(SRCSLIB))
+SRCSPRF = $(addprefix printf/, $(SRCSPR))
 
-$(NAME):	$(OBJECTS)
-	cc $(FLAGS) -c $(LIB)
-	ar -rc $(NAME) $(OBJECTS)
+OBJS = $(SRCS:.c=.o)
+OBJSLIB = $(SRCSLIBF:.c=.o)
+OBJSPR = $(SRCSPRF:.c=.o)
 
-bonus:	$(OBJECTS)	$(BONUS_OBJECTS)
-	ar -rc $(NAME) $(OBJECTS) $(BONUS_OBJECTS)
+LIB = push_swap.h
+
+all: $(NAME)
+
+$(NAME): $(OBJS) $(OBJSLIB) $(OBJSPR)
+	@$(COMPILER) $(OBJS) $(OBJSLIB) $(OBJSPR) -o push_swap
 
 clean:
-	rm -f *.o *.gch
+	@rm -f *.o libft/*.o printf/*.o
 
-fclean:	clean
-	rm -f $(NAME)
+fclean: clean
+	@rm -f push_swap
 
 re: fclean all

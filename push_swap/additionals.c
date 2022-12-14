@@ -1,74 +1,114 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   additionals.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/12 09:55:17 by amorais-          #+#    #+#             */
+/*   Updated: 2022/12/14 15:27:41 by amorais-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	ft_swap(int *a, int *b, int counter, char array)
+/* void	printer(t_stack *a, t_stack *b)
 {
-	int	c[1];
+	t_stack	*current;
 
-	if (counter > 1)
+	ft_printf("a: ");
+	current = a;
+	while (current)
 	{
-		c[0] = *a;
-		*a = *b;
-		*b = c[0];
+		ft_printf("%d ", current->number);
+		current = current->next;
 	}
-	if (array)
-		ft_printf("s%c\n", array);
-}
-
-void	push(int *a, int *b, int *counter_a, int *counter_b)
-{
-	int	i;
-
-	i = *counter_a;
-	if (*counter_b == 0)
-		return ;
-	while (i > 0)
+	ft_printf("\nb: ");
+	current = b;
+	while (current)
 	{
-		a[i] = a[i - 1];
-		i--;
+		ft_printf("%d ", current->number);
+		current = current->next;
 	}
-	a[0] = b[0];
-	while (++i < *counter_b)
-		b[i - 1] = b[i];
-	(*counter_a)++;
-	(*counter_b)--;
-}
+	ft_printf("\n");
+} */
 
-void	rotate(int *a, int counter_a, char array)
-{
-	int	i;
-	int	c;
-
-	i = 0;
-	c = a[0];
-	while (++i < counter_a)
-		a[i - 1] = a[i];
-	a[i - 1] = c;
-	if (array)
-		ft_printf("r%c\n", array);
-}
-
-void	reverse_rotate(int *a, int counter_a, char array)
-{
-	int	i;
-	int	c;
-
-	i = 0;
-	c = a[0];
-	while (++i < counter_a)
-		c = a[i];
-	while (--i >= 0)
-		a[i] = a[i - 1];
-	a[0] = c;
-	if (array)
-		ft_printf("rr%c\n", array);
-}
-
-int	split_size(char **array)
+int	stack_size(t_stack *a)
 {
 	int	i;
 
 	i = 0;
-	while (array[i])
+	while (a)
+	{
 		i++;
+		a = a->next;
+	}
 	return (i);
+}
+
+t_stack	*stc_last(t_stack *a)
+{
+	t_stack	*last;
+
+	last = a;
+	while (last->next)
+		last = last->next;
+	return (last);
+}
+
+int	min_position(t_stack *a)
+{
+	int	min;
+	int	i;
+	int	m;
+
+	i = 0;
+	m = 0;
+	min = a->number;
+	while (a)
+	{
+		if (a->number < min)
+		{
+			min = a->number;
+			m = i;
+		}
+		i++;
+		a = a->next;
+	}
+	return (m);
+}
+
+int	max_position(t_stack *a)
+{
+	int	max;
+	int	i;
+	int	m;
+
+	i = 0;
+	m = 0;
+	max = a->number;
+	while (a)
+	{
+		if (a->number > max)
+		{
+			max = a->number;
+			m = i;
+		}
+		i++;
+		a = a->next;
+	}
+	return (m);
+}
+
+void	stack_clear(t_stack **a)
+{
+	t_stack	*temp;
+
+	while (*a)
+	{
+		temp = (*a)->next;
+		free(*a);
+		*a = temp;
+	}
+	*a = NULL;
 }

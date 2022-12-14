@@ -5,26 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 11:12:52 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/08 13:25:49 by amorais-         ###   ########.fr       */
+/*   Created: 2022/12/12 09:58:34 by amorais-          #+#    #+#             */
+/*   Updated: 2022/12/14 11:06:09 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
+#ifndef PUSH_SWAP_H	
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
 # include "printf/ft_printf.h"
-void	ft_swap(int *a, int *b, int counter, char array);
-void	push(int *a, int *b, int *counter_a, int *counter_b);
-void	rotate(int *a, int counter_a, char array);
-void	reverse_rotate(int *a, int counter_a, char array);
-int		split_size(char **array);
-void	sorter(int *a, int *b, int counter_a, int counter_b);
-void	sort_two(int *a, int counter);
-void	sort_three(int *a, int counter_a, char array);
-void	sort_four_to_six(int *a, int *b, int *counter_a, int *counter_b);
-void	reverse_sort_b(int *a, int *b, int *counter_a, int *counter_b);
-int		sorted(int *a, int counter_a);
-void	get_min_to_beg(int *a, int counter_a);
+
+typedef struct list
+{
+	long int	number;
+	struct list	*next;
+}	t_stack;
+
+void	push(t_stack **a, t_stack **b, char c);
+void	swap(t_stack **a, char c);
+void	rotate(t_stack **a, t_stack **b, char c);
+void	printer(t_stack *a, t_stack *b);
+void	reverse_rotate(t_stack **a, t_stack **b, char c);
+int		stack_size(t_stack *a);
+void	sorter(t_stack *a, t_stack *b);
+int		sorted(t_stack *a);
+t_stack	*stc_last(t_stack *a);
+void	sort_three(t_stack **a, t_stack **b);
+int		min_position(t_stack *a);
+void	sort_four_to_five(t_stack **a, t_stack **b);
+int		position(t_stack *current, t_stack *a);
+int		position_in_other(int current, t_stack *a);
+int		cost(t_stack *current, t_stack *a, t_stack *b);
+void	sort(t_stack **a, t_stack **b);
+int		max_position(t_stack *a);
+void	stack_clear(t_stack **a);
+int		min(t_stack *a);
 #endif
