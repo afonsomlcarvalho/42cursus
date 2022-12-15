@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:56:26 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/14 13:50:06 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/15 15:33:16 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,31 @@ t_stack	*min_cost_finder(t_stack *a, t_stack *b)
 	return (min_cost);
 }
 
+int		diff_sorted(t_stack *a)
+{
+	long int	first;
+
+	if (sorted(a))
+		return (1);
+	first = a->number;
+	while (a->number < a->next->number)
+		a = a->next;
+	a = a->next;
+	while (a->next)
+	{
+		if (a->number > a->next->number)
+			return (0);
+		a = a->next;
+	}
+	return (first > a->number);
+}
+
 void	pusher(t_stack **a, t_stack **b)
 {
-	while (stack_size(*a) > 3)
+	while (stack_size(*a) > 3 && !diff_sorted(*a))
 		push(a, b, 'b');
-	sort_three(a, b);
+	if (!diff_sorted(*a))
+		sort_three(a, b);
 }
 
 void	sort(t_stack **a, t_stack **b)

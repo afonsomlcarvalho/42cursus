@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 09:56:08 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/14 15:13:19 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/15 11:53:48 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	swap(t_stack **a, char c)
 {
 	long int	swap;
 
+	if (stack_size(*a) < 2)
+		return ;
 	swap = (*a)->number;
 	(*a)->number = (*a)->next->number;
 	(*a)->next->number = swap;

@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 09:58:34 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/14 11:06:09 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/15 15:29:43 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,5 @@ void	sort(t_stack **a, t_stack **b);
 int		max_position(t_stack *a);
 void	stack_clear(t_stack **a);
 int		min(t_stack *a);
+int		diff_sorted(t_stack *a);
 #endif

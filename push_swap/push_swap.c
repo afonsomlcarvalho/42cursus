@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 22:57:40 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/14 15:29:35 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/15 15:33:26 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,5 +106,6 @@ int	main(int argv, char **argc)
 		stack_clear(&a);
 		exit(0);
 	}
+	(void)b;
 	sorter(a, b);
 }

@@ -57,24 +57,33 @@ SRCSPR = ft_nbrlen.c \
 		ft_printf.c \
 		ft_putnbrs.c
 
+SRCSCH = checker_rules.c \
+		checker_utils.c \
+		checker.c \
+		getnextline/get_next_line.c \
+		getnextline/get_next_line_utils.c
+
 SRCSLIBF = $(addprefix libft/, $(SRCSLIB))
 SRCSPRF = $(addprefix printf/, $(SRCSPR))
+SRCSCHF = $(addprefix checker_bonus/, $(SRCSCH))
 
 OBJS = $(SRCS:.c=.o)
 OBJSLIB = $(SRCSLIBF:.c=.o)
 OBJSPR = $(SRCSPRF:.c=.o)
-
-LIB = push_swap.h
+OBJSCH = $(SRCSCHF:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS) $(OBJSLIB) $(OBJSPR)
 	@$(COMPILER) $(OBJS) $(OBJSLIB) $(OBJSPR) -o push_swap
 
+bonus: $(OBJSLIB) $(OBJSCH)
+	@$(COMPILER) $(OBJSLIB) $(OBJSCH) -o checker
+
 clean:
-	@rm -f *.o libft/*.o printf/*.o
+	@rm -f *.o libft/*.o printf/*.o checker_bonus/*.o checker_bonus/getnextline/*.o
 
 fclean: clean
-	@rm -f push_swap
+	@rm -f push_swap checker
 
 re: fclean all
