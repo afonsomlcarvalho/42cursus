@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 11:56:26 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/15 15:33:16 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:48:50 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_stack	*min_cost_finder(t_stack *a, t_stack *b)
 	return (min_cost);
 }
 
-int		diff_sorted(t_stack *a)
+int	diff_sorted(t_stack *a)
 {
 	long int	first;
 

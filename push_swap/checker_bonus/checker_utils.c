@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker_utils.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/16 11:40:07 by amorais-          #+#    #+#             */
+/*   Updated: 2022/12/16 13:49:27 by amorais-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
 void	split_free(char **array)
@@ -82,7 +94,8 @@ void	error_management(int argv, char **argc, t_stack **a, t_stack **b)
 		write(2, "Error\n", 6);
 		exit(0);
 	}
-	if ((argv == 2 && error_check(ft_split(argc[1], ' '), 0)) || error_check(argc, 1))
+	if ((argv == 2 && error_check(ft_split(argc[1], ' '), 0)) || \
+	(argv != 2 && error_check(argc, 1)))
 	{
 		write(2, "Error\n", 6);
 		exit(0);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/16 13:49:41 by amorais-          #+#    #+#             */
+/*   Updated: 2022/12/16 13:50:14 by amorais-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
 
 int	checker_stack_size(t_stack *a)
@@ -28,30 +40,30 @@ void	checker_stack_clear(t_stack **a)
 
 void	apply_rules(char *rule, t_stack	**a, t_stack **b)
 {
-	if (!ft_strncmp(rule, "sa", 3))
+	if (!ft_strncmp(rule, "sa\n", 3))
 		checker_swap(a, b, 0);
-	else if (!ft_strncmp(rule, "sb", 3))
+	else if (!ft_strncmp(rule, "sb\n", 3))
 		checker_swap(b, a, 0);
-	else if (!ft_strncmp(rule, "ss", 3))
+	else if (!ft_strncmp(rule, "ss\n", 3))
 		checker_swap(a, b, 1);
-	else if (!ft_strncmp(rule, "pa", 3))
+	else if (!ft_strncmp(rule, "pa\n", 3))
 		checker_push(b, a);
-	else if (!ft_strncmp(rule, "pb", 3))
+	else if (!ft_strncmp(rule, "pb\n", 3))
 		checker_push(a, b);
-	else if (!ft_strncmp(rule, "ra", 3))
+	else if (!ft_strncmp(rule, "ra\n", 3))
 		checker_rotate(a, b, 0);
-	else if (!ft_strncmp(rule, "rb", 3))
+	else if (!ft_strncmp(rule, "rb\n", 3))
 		checker_rotate(b, a, 0);
-	else if (!ft_strncmp(rule, "rr", 3))
+	else if (!ft_strncmp(rule, "rr\n", 3))
 		checker_rotate(a, b, 1);
-	else if (!ft_strncmp(rule, "rra", 4))
+	else if (!ft_strncmp(rule, "rra\n", 4))
 		checker_reverse_rotate(a, b, 0);
-	else if (!ft_strncmp(rule, "rrb", 4))
+	else if (!ft_strncmp(rule, "rrb\n", 4))
 		checker_reverse_rotate(b, a, 0);
-	else if (!ft_strncmp(rule, "rrr", 4))
+	else if (!ft_strncmp(rule, "rrr\n", 4))
 		checker_reverse_rotate(a, b, 1);
 	else
-		error_management(0, (char **)NULL, a, b);
+		error_management(0, (char **) NULL, a, b);
 }
 
 int	main(int argv, char **argc)
@@ -60,7 +72,7 @@ int	main(int argv, char **argc)
 	t_stack	*b;
 	char	*rule;
 
-	error_management(argv, argc, (t_stack **)NULL, (t_stack **)NULL);
+	error_management(argv, argc, (t_stack **) NULL, (t_stack **) NULL);
 	if (argv == 2)
 		a = a_creator(ft_split(argc[1], ' '), 0);
 	else
