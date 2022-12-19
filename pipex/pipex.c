@@ -1,15 +1,17 @@
 #include "pipex.h"
 
-int	main(int argc, char **argv, char **env)
+int	main()
 {
-	int	i;
+	int	id;
 
-	(void) argc;
-	(void) argv;
-	i = 0;
-	while (env[i])
+	id = fork();
+	if (id == 0)
 	{
-		ft_printf("%s\n", env[i]);
-		i++;
+		printf("Child id: %d\n", getpid());
+	}
+	else
+	{
+		wait(NULL);
+		printf("Parent id: %d\nChild's id: %d\n", getpid(), id);
 	}
 }
