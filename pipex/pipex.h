@@ -5,4 +5,6 @@
 # include <errno.h>
 # include <sys/wait.h>
 # include <fcntl.h>
+
+char	*path_finder(char **env, char *command);
 #endif
