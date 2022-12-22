@@ -4,4 +4,5 @@
 # include "printf/ft_printf.h"
 # include <errno.h>
 # include <sys/wait.h>
+# include <fcntl.h>
 #endif
