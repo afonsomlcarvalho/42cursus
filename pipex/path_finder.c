@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 13:39:33 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/22 14:18:24 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/23 13:58:50 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ char	*path_finder(char **env, char *command)
 	char	**paths;
 	int		i;
 
+	path = NULL;
 	i = 0;
 	while (env[i])
 	{
@@ -117,5 +118,7 @@ char	*path_finder(char **env, char *command)
 		i++;
 	}
 	free(paths);
+	if (!path)
+		path = "Error";
 	return (path);
 }

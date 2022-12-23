@@ -1,1 +1,9 @@
-po po t a
+total 56
+-rwxrwxr-x 1 afonsomlcarvalho afonsomlcarvalho 28744 dez 23 13:59 a.out
+-rw-rw-r-- 1 afonsomlcarvalho afonsomlcarvalho    32 dez 21 10:19 infile
+drwxrwxr-x 2 afonsomlcarvalho afonsomlcarvalho  4096 dez 17 12:18 libft
+-rwx------ 1 afonsomlcarvalho afonsomlcarvalho     0 dez 23 14:06 outfile
+-rw-rw-r-- 1 afonsomlcarvalho afonsomlcarvalho  2397 dez 23 13:58 path_finder.c
+-rw-rw-r-- 1 afonsomlcarvalho afonsomlcarvalho  2018 dez 23 14:05 pipex.c
+-rw-rw-r-- 1 afonsomlcarvalho afonsomlcarvalho   202 dez 23 10:42 pipex.h
+drwxrwxr-x 2 afonsomlcarvalho afonsomlcarvalho  4096 dez 17 12:19 printf
