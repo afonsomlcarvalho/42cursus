@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 13:39:33 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/23 13:58:50 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/27 12:01:34 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ char	**path_split(char *str, char *command)
 			j++;
 		}
 		paths[i][x] = '\0';
-		paths[i] = appends(paths[i], command);
+		if (command)
+			paths[i] = appends(paths[i], command);
 		i++;
 		j++;
 	}

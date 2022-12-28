@@ -6,31 +6,47 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 13:50:39 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/23 14:05:24 by amorais-         ###   ########.fr       */
+/*   Updated: 2022/12/28 15:07:17 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argc, char **argv, char **env)
+t_command	*new_command(char *comm, char **env)
 {
-	char	**args1;
-	char	**args2;
-	int		fd[2];
-	int		pipe1[2];
-	int		id;
-	char	*path1;
-	char	*path2;
+	t_command	*cmd;
 
+	cmd = malloc(sizeof(t_command));
+	cmd->args = ft_split(comm, ' ');
+	cmd->path = path_finder(env, cmd->args[0]);
+	cmd->next = NULL;
+	return (cmd);
+}
+
+void	fd_creator(int	argc, char **argv, int *fd0, int *fd1)
+{
 	if (argc != 5)
 		exit(0);
 	if (access(argv[4], F_OK) == 0)
 		unlink(argv[4]);
-	fd[1] = open(argv[4], O_WRONLY | O_CREAT, S_IRWXU);
+	*fd1 = open(argv[4], O_WRONLY | O_CREAT, S_IRWXU);
 	if (access(argv[1], F_OK) == 0)
-		fd[0] = open(argv[1], O_RDONLY);
-	if (!(fd[0]))
+		*fd0 = open(argv[1], O_RDONLY);
+	else
+	{
 		ft_printf("bash: %s: %s\n", argv[1], strerror(errno));
+		exit(0);
+	}
+}
+
+int	main(int argc, char **argv, char **env)
+{
+	t_command	*cmd;
+	int			i;
+
+	
+	new_command(argv[2], env);
+	fd_creator(argc, argv, &fd[0], &fd[1]);
 	args1 = ft_split(argv[2], ' ');
 	args2 = ft_split(argv[3], ' ');
 	path1 = path_finder(env, args1[0]);
