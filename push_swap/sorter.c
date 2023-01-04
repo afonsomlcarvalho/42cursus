@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 09:56:17 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/13 17:06:04 by amorais-         ###   ########.fr       */
+/*   Updated: 2023/01/04 11:42:49 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	sorter(t_stack *a, t_stack *b)
 		swap(&a, 'a');
 	else if (stack_size(a) == 3)
 		sort_three(&a, &b);
-	else if (stack_size(a) <= 5)
-		sort_four_to_five(&a, &b);
+	//else if (stack_size(a) <= 5)
+		//sort_four_to_five(&a, &b);
 	else
 		sort(&a, &b);
 	stack_clear(&a);

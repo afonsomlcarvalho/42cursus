@@ -6,13 +6,13 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:45:55 by amorais-          #+#    #+#             */
-/*   Updated: 2022/11/21 10:32:13 by amorais-         ###   ########.fr       */
+/*   Updated: 2023/01/02 13:11:28 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(char *str)
+int	size(char *str)
 {
 	int	i;
 
@@ -24,13 +24,13 @@ int	ft_strlen(char *str)
 	return (i + (str[i] == '\n'));
 }
 
-char	*ft_strjoin(char *line, char *text)
+char	*strjoin(char *line, char *text)
 {
 	char	*joined;
 	int		i;
 
 	i = 0;
-	joined = malloc(ft_strlen(line) + ft_strlen(text) + 1);
+	joined = malloc(size(line) + size(text) + 1);
 	if (!joined)
 		return (NULL);
 	while (line && line[i])

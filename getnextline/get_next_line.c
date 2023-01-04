@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 13:51:28 by amorais-          #+#    #+#             */
-/*   Updated: 2022/11/18 10:55:10 by amorais-         ###   ########.fr       */
+/*   Updated: 2023/01/02 13:09:33 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*get_next_line(int fd)
 	line = NULL;
 	while (text[0] || read(fd, text, BUFFER_SIZE) > 0)
 	{
-		line = ft_strjoin(line, text);
+		line = strjoin(line, text);
 		if (clear(text))
 			break ;
 	}

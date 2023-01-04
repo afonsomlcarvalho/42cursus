@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:46:01 by amorais-          #+#    #+#             */
-/*   Updated: 2022/11/18 10:27:30 by amorais-         ###   ########.fr       */
+/*   Updated: 2023/01/02 13:09:08 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@
 # endif
 
 char	*get_next_line(int fd);
-char	*ft_strjoin(char *line, char *text);
+char	*strjoin(char *line, char *text);
 int		clear(char *text);
 #endif
