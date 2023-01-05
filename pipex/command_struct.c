@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   command_struct.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/05 11:26:25 by amorais-          #+#    #+#             */
+/*   Updated: 2023/01/05 14:38:31 by amorais-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 t_command	*struct_creator(int argc, char **argv, char **env)
@@ -30,4 +42,13 @@ t_command	*second_to_last(t_command *com)
 	while (com->next != last_command(com))
 		com = com->next;
 	return (com);
+}
+
+void	command_verifier(t_command **com)
+{
+	if (access((*com)->args[0], F_OK) != 0)
+	{
+		ft_printf("zsh: no such file or directory: %s\n", (*com)->args[0]);
+		(*com) = last_command(*com);
+	}
 }

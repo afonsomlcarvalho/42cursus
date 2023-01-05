@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 09:51:28 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/02 10:03:03 by amorais-         ###   ########.fr       */
+/*   Updated: 2023/01/05 11:21:44 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_type(char c, va_list valist, int len)
 		}
 		else
 		{
-			ft_putstr_fd(s, 1);
+			ft_putstr_fd(s, 2);
 			len = len + ft_strlen(s);
 		}
 	}
@@ -96,7 +96,7 @@ int	ft_printf(const char *s, ...)
 		}
 		else
 		{
-			ft_putchar_fd(s[i], 1);
+			ft_putchar_fd(s[i], 2);
 			len++;
 		}
 		i++;

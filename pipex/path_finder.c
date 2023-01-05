@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 13:39:33 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/27 12:01:34 by amorais-         ###   ########.fr       */
+/*   Updated: 2023/01/05 14:11:43 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,7 @@ char	**path_split(char *str, char *command)
 		paths[i] = malloc(path_size(str, j) + 1);
 		while (path_size(str, j))
 		{
-			paths[i][x] = str[j];
-			x++;
+			paths[i][x++] = str[j];
 			j++;
 		}
 		paths[i][x] = '\0';
@@ -108,18 +107,16 @@ char	*path_finder(char **env, char *command)
 			env_path = env[i];
 		i++;
 	}
-	i = 0;
+	i = -1;
 	paths = path_split(env_path, command);
-	while (paths[i])
+	while (paths[++i])
 	{
 		if (access(paths[i], F_OK) == 0)
+		{
 			path = paths[i];
-		else
-			free(paths[i]);
-		i++;
+			break ;
+		}
 	}
-	free(paths);
-	if (!path)
-		path = "Error";
+	free_split(paths, i);
 	return (path);
 }
