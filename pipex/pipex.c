@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:26:38 by amorais-          #+#    #+#             */
-/*   Updated: 2023/01/06 14:08:38 by amorais-         ###   ########.fr       */
+/*   Updated: 2023/01/06 16:12:55 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ int	main(int argc, char **argv, char **env)
 	if (access(com->args[0], F_OK) == 0)
 		com->pip[0] = open(com->args[0], O_RDONLY);
 	else
-		ft_printf("zsh: no such file or directory: %s\n", com->args[0]);
-	while (com->next && com->next != last_command(com))
+		no_infile(&com);
+	while (com->next != last_command(com))
 	{
 		exec_command(&com, env, out_fd, &start);
 		com = com->next;
@@ -73,5 +73,6 @@ int	main(int argc, char **argv, char **env)
 	close(com->pip[0]);
 	while (argc-- > 3)
 		wait(NULL);
+	unlink("no_infile");
 	command_clear(&start);
 }

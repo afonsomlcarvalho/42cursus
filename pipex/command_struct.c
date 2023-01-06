@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:26:25 by amorais-          #+#    #+#             */
-/*   Updated: 2023/01/06 13:42:32 by amorais-         ###   ########.fr       */
+/*   Updated: 2023/01/06 16:12:36 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,11 @@ t_command	*second_to_last(t_command *com)
 	while (com->next != last_command(com))
 		com = com->next;
 	return (com);
+}
+
+void	no_infile(t_command **com)
+{
+	ft_printf("zsh: no such file or directory: %s\n", (*com)->args[0]);
+	(*com) = (*com)->next;
+	(*com)->pip[0] = open("no_infile", O_CREAT);
 }

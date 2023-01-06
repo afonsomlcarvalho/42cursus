@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:26:41 by amorais-          #+#    #+#             */
-/*   Updated: 2023/01/06 13:42:27 by amorais-         ###   ########.fr       */
+/*   Updated: 2023/01/06 16:12:05 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,5 @@ t_command	*second_to_last(t_command *com);
 void		command_clear(t_command **com);
 void		free_split(char **array, int x);
 void		error_management(t_command **com, int error_code);
+void		no_infile(t_command **com);
 #endif
