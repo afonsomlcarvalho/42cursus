@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/22 13:39:33 by amorais-          #+#    #+#             */
-/*   Updated: 2023/01/05 14:11:43 by amorais-         ###   ########.fr       */
+/*   Updated: 2023/01/06 10:31:21 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,15 @@ char	*appends(char *path, char *command)
 	char	*full;
 
 	full = malloc(ft_strlen(path) + ft_strlen(command) + 2);
-	i = 0;
-	j = 0;
-	while (path[i])
+	if (!full)
 	{
-		full[i] = path[i];
-		i++;
+		free(path);
+		return (NULL);
 	}
+	i = -1;
+	j = 0;
+	while (path[++i])
+		full[i] = path[i];
 	full[i] = '/';
 	i++;
 	while (command[j])
@@ -71,21 +73,21 @@ char	**path_split(char *str, char *command)
 	char	**paths;
 
 	paths = malloc(sizeof(char *) * (count_paths(str) + 1));
+	if (!paths)
+		return (NULL);
 	j = 5;
-	i = 0;
-	while (i < count_paths(str))
+	i = -1;
+	while (++i < count_paths(str))
 	{
 		x = 0;
 		paths[i] = malloc(path_size(str, j) + 1);
+		if (!paths[i])
+			return (NULL);
 		while (path_size(str, j))
-		{
-			paths[i][x++] = str[j];
-			j++;
-		}
+			paths[i][x++] = str[j++];
 		paths[i][x] = '\0';
 		if (command)
 			paths[i] = appends(paths[i], command);
-		i++;
 		j++;
 	}
 	paths[i] = 0;

@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 11:26:29 by amorais-          #+#    #+#             */
-/*   Updated: 2023/01/05 14:38:41 by amorais-         ###   ########.fr       */
+/*   Updated: 2023/01/06 10:19:24 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,23 @@ void	command_clear(t_command **com)
 	(*com) = NULL;
 }
 
-void	error_management(t_command *com)
+void	error_management(t_command **com, int error_code)
 {
-	ft_printf("zsh: command not found: %s\n", com->next->args[0]);
-	exit(0);
+	if (error_code == 0)
+	{
+		perror("Pipe failed");
+		command_clear(com);
+		exit(0);
+	}
+	if (error_code == 1)
+	{
+		perror("Fork failed");
+		command_clear(com);
+		exit(0);
+	}
+	if (error_code == 2)
+	{
+		ft_printf("zsh: command not found: %s\n", (*com)->next->args[0]);
+		exit(0);
+	}
 }
