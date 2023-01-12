@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:49:41 by amorais-          #+#    #+#             */
-/*   Updated: 2022/12/16 13:50:14 by amorais-         ###   ########.fr       */
+/*   Updated: 2023/01/12 13:23:39 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	main(int argv, char **argc)
 		rule = get_next_line(0);
 	}
 	free(rule);
-	if (sorted(a))
+	if (sorted(a) && !b)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);

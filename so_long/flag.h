@@ -31,10 +31,11 @@ typedef	struct s_img
 
 typedef struct s_master
 {
-	t_img	walk_up;
-	t_img	walk_down;
-	t_img	walk_right;
-	t_img	walk_left;
+	t_img		walk_up;
+	t_img		walk_down;
+	t_img		walk_right;
+	t_img		walk_left;
+	t_coords	position;
 }				t_master;
 
 
@@ -48,4 +49,6 @@ typedef struct	s_vars
 	t_master	master;
 }				t_vars;
 
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	paint_background(int x, int y, int color, t_vars vars);
 #endif
