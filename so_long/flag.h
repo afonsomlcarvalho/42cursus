@@ -36,8 +36,8 @@ typedef struct s_master
 	t_img		walk_right;
 	t_img		walk_left;
 	t_coords	position;
+	int			status;
 }				t_master;
-
 
 typedef struct	s_vars
 {

@@ -6,7 +6,7 @@
 /*   By: amorais- <amorais-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:07:38 by amorais-          #+#    #+#             */
-/*   Updated: 2023/01/12 15:19:26 by amorais-         ###   ########.fr       */
+/*   Updated: 2023/01/12 16:30:50 by amorais-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,42 @@ char	*line_join(char	*line, char	*gnl)
 	return (new_line);
 }
 
+int	coord_management(t_map *map, int i, int j)
+{
+	if (map->map[i][j] == 'P')
+	{
+		map->master.position.x = j + 1;
+		map->master.position.y = i + 1;
+	}
+	else if (map->map[i][j] == 'E')
+	{
+		map->exit.position.x = j + 1;
+		map->exit.position.y = i + 1;
+	}
+	else if (map->map[i][j] != '1' && map->map[i][j] != '0' && map->map[i][j] != 'C')
+		return (-1);
+	return (0);
+}
+
+int	map_setup(t_map	*map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map->map[i])
+	{
+		j = 0;
+		while (map->map[i][j])
+			if (coord_management(map, i, j++) == -1)
+				return (-1);
+		if (j != map->dimension.x)
+			return (-1);
+		i++;
+	}
+	return (0);
+}
+
 t_map	map_creator(char *map_name)
 {
 	t_map	map;
@@ -55,6 +91,8 @@ t_map	map_creator(char *map_name)
 	map.map = ft_split(line, '\n');
 	map.dimension.x = ft_strlen(map.map[0]);
 	free(line);
+	if (map_setup(&map) == -1)
+		write(2, "Error\n", 6);
 	return (map);
 }
 
@@ -73,6 +111,6 @@ int	main()
 	t_map	map;
 
 	map = map_creator("map.ber");
-	printf("%d\n", map_validator(map));
+	printf("master is at (%d, %d).\nexit is at (%d, %d)\n", map.master.position.x, map.master.position.y, map.exit.position.x, map.exit.position.y);
 	map_clear(map);
 }

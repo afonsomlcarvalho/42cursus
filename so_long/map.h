@@ -10,6 +10,7 @@ typedef	struct s_map
 	t_coords	dimension;
 	int			fd;
 	t_master	master;
+	t_master	exit;
 }				t_map;
 
 t_map	map_creator(char *map_name);
